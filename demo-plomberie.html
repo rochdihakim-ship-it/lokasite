@@ -32,16 +32,86 @@ h2.t{text-align:center;font-size:1.6rem;margin-bottom:2rem}
 .contact{background:linear-gradient(135deg,var(--pd),var(--p));color:#fff;text-align:center}
 .contact p{opacity:.9;margin-bottom:1.4rem}
 .contact .cta{display:inline-block;background:#fff;color:var(--pd);padding:.9rem 1.7rem;border-radius:10px;text-decoration:none;font-weight:700}
+
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center;text-align:left}
+.hero .badges{justify-content:flex-start}
+.hero-art svg{width:100%;height:auto;border-radius:16px;box-shadow:0 14px 40px rgba(0,0,0,.25)}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr;text-align:center}.hero .badges{justify-content:center}.hero-art{max-width:420px;margin:0 auto}}
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
+.gal-grid figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.gal-grid svg{display:block;width:100%;height:auto}
+.gal-grid figcaption{padding:.8rem 1rem;font-size:.92rem;font-weight:600}
+
 footer.site{padding:1.6rem 0;text-align:center;color:var(--soft);font-size:.85rem;border-top:1px solid var(--line)}
 </style></head><body>
 <div class="demo-band">Site fictif de démonstration — votre site comme celui-ci dès 24 €/mois tout compris → <a href="https://lokasite.fr">lokasite.fr</a></div>
 <header class="site"><div class="wrap nav"><div class="brand">Plomberie Martin</div><a class="cta" href="#contact">Demander un devis</a></div></header>
 <div class="hero"><div class="wrap">
-<h1>Votre plombier chauffagiste à Lyon, disponible 6j/7</h1><p>Dépannage, installation et entretien — intervention rapide, tarifs annoncés avant chaque intervention, travail soigné garanti.</p>
+<div><h1>Votre plombier chauffagiste à Lyon, disponible 6j/7</h1><p>Dépannage, installation et entretien — intervention rapide, tarifs annoncés avant chaque intervention, travail soigné garanti.</p>
 <a class="cta" href="#contact">Demander une intervention</a>
-<div class="badges"><span>Devis gratuit</span><span>Intervention sous 24 h</span><span>Garantie décennale</span><span>Artisan certifié RGE</span></div>
+<div class="badges"><span>Devis gratuit</span><span>Intervention sous 24 h</span><span>Garantie décennale</span><span>Artisan certifié RGE</span></div></div>
+<div class="hero-art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" role="img">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbeafe"/><stop offset="1" stop-color="#eff6ff"/></linearGradient></defs>
+<rect width="400" height="280" fill="url(#bg)" rx="0"/>
+<rect x="0" y="210" width="400" height="70" fill="#bfdbfe"/>
+<rect x="40" y="40" width="150" height="170" rx="8" fill="#fff"/>
+<rect x="52" y="52" width="126" height="146" fill="#e0f2fe"/>
+<line x1="52" y1="90" x2="178" y2="90" stroke="#bae6fd" stroke-width="3"/><line x1="52" y1="128" x2="178" y2="128" stroke="#bae6fd" stroke-width="3"/><line x1="52" y1="166" x2="178" y2="166" stroke="#bae6fd" stroke-width="3"/>
+<line x1="115" y1="52" x2="115" y2="198" stroke="#bae6fd" stroke-width="3"/>
+<rect x="230" y="30" width="10" height="60" rx="4" fill="#64748b"/>
+<rect x="216" y="84" width="38" height="14" rx="7" fill="#94a3b8"/>
+<path d="M225 98 q10 18 0 0 M235 98 l-3 22 M245 98 l0 26 M255 98 l3 22" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" fill="none"/>
+<ellipse cx="245" cy="235" rx="90" ry="26" fill="#fff"/>
+<path d="M155 235 a90 26 0 0 1 180 0 l-14 0 a76 20 0 0 0 -152 0 z" fill="#e2e8f0"/>
+<rect x="330" y="120" width="34" height="90" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="3"/>
+<line x1="337" y1="130" x2="337" y2="200" stroke="#cbd5e1" stroke-width="4"/><line x1="347" y1="130" x2="347" y2="200" stroke="#cbd5e1" stroke-width="4"/><line x1="357" y1="130" x2="357" y2="200" stroke="#cbd5e1" stroke-width="4"/>
+<circle cx="90" cy="240" r="14" fill="#16a34a"/><rect x="86" y="222" width="8" height="16" fill="#15803d"/>
+</svg></div>
 </div></div>
 <section id="services"><div class="wrap"><h2 class="t">Nos prestations</h2><div class="grid"><div class="svc"><span class="ico">🔧</span><h3>Dépannage urgent</h3><p>Fuites, canalisations bouchées, chauffe-eau en panne : intervention rapide sur Lyon et alentours.</p></div><div class="svc"><span class="ico">🚿</span><h3>Salle de bain</h3><p>Installation et rénovation complète : douche, baignoire, robinetterie, carrelage.</p></div><div class="svc"><span class="ico">🔥</span><h3>Chauffage</h3><p>Pose et entretien de chaudières et chauffe-eau, contrats d'entretien annuels.</p></div><div class="svc"><span class="ico">🏠</span><h3>Plomberie neuve</h3><p>Plomberie complète pour construction et rénovation, plans et conseils inclus.</p></div></div></div></section>
+<section id="realisations"><div class="wrap"><h2 class="t">Nos réalisations</h2><div class="gal-grid"><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" role="img">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbeafe"/><stop offset="1" stop-color="#eff6ff"/></linearGradient></defs>
+<rect width="400" height="280" fill="url(#bg)" rx="0"/>
+<rect x="0" y="210" width="400" height="70" fill="#bfdbfe"/>
+<rect x="40" y="40" width="150" height="170" rx="8" fill="#fff"/>
+<rect x="52" y="52" width="126" height="146" fill="#e0f2fe"/>
+<line x1="52" y1="90" x2="178" y2="90" stroke="#bae6fd" stroke-width="3"/><line x1="52" y1="128" x2="178" y2="128" stroke="#bae6fd" stroke-width="3"/><line x1="52" y1="166" x2="178" y2="166" stroke="#bae6fd" stroke-width="3"/>
+<line x1="115" y1="52" x2="115" y2="198" stroke="#bae6fd" stroke-width="3"/>
+<rect x="230" y="30" width="10" height="60" rx="4" fill="#64748b"/>
+<rect x="216" y="84" width="38" height="14" rx="7" fill="#94a3b8"/>
+<path d="M225 98 q10 18 0 0 M235 98 l-3 22 M245 98 l0 26 M255 98 l3 22" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" fill="none"/>
+<ellipse cx="245" cy="235" rx="90" ry="26" fill="#fff"/>
+<path d="M155 235 a90 26 0 0 1 180 0 l-14 0 a76 20 0 0 0 -152 0 z" fill="#e2e8f0"/>
+<rect x="330" y="120" width="34" height="90" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="3"/>
+<line x1="337" y1="130" x2="337" y2="200" stroke="#cbd5e1" stroke-width="4"/><line x1="347" y1="130" x2="347" y2="200" stroke="#cbd5e1" stroke-width="4"/><line x1="357" y1="130" x2="357" y2="200" stroke="#cbd5e1" stroke-width="4"/>
+<circle cx="90" cy="240" r="14" fill="#16a34a"/><rect x="86" y="222" width="8" height="16" fill="#15803d"/>
+</svg><figcaption>Rénovation de salle de bain</figcaption></figure><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" role="img">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0f2fe"/><stop offset="1" stop-color="#f0f9ff"/></linearGradient></defs>
+<rect width="400" height="280" fill="url(#bg)" rx="0"/>
+<rect x="0" y="220" width="400" height="60" fill="#bae6fd"/>
+<rect x="60" y="35" width="110" height="150" rx="12" fill="#fff" stroke="#cbd5e1" stroke-width="3"/>
+<circle cx="115" cy="80" r="22" fill="#e0f2fe" stroke="#38bdf8" stroke-width="4"/>
+<circle cx="115" cy="80" r="7" fill="#0284c7"/>
+<rect x="85" y="120" width="60" height="10" rx="5" fill="#e2e8f0"/><rect x="85" y="140" width="60" height="10" rx="5" fill="#e2e8f0"/>
+<rect x="98" y="185" width="12" height="35" fill="#94a3b8"/><rect x="122" y="185" width="12" height="35" fill="#94a3b8"/>
+<path d="M110 220 l0 -20 M180 160 l60 0 q14 0 14 14 l0 46" stroke="#f59e0b" stroke-width="10" fill="none" stroke-linecap="round"/>
+<rect x="240" y="60" width="90" height="120" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+<line x1="255" y1="75" x2="255" y2="165" stroke="#94a3b8" stroke-width="6"/><line x1="273" y1="75" x2="273" y2="165" stroke="#94a3b8" stroke-width="6"/><line x1="291" y1="75" x2="291" y2="165" stroke="#94a3b8" stroke-width="6"/><line x1="309" y1="75" x2="309" y2="165" stroke="#94a3b8" stroke-width="6"/>
+<path d="M352 90 a18 18 0 1 1 -6 35 l-16 46 -14 -5 16 -46 a18 18 0 0 1 20 -30 l-8 22 12 4 z" fill="#475569"/>
+</svg><figcaption>Installation chauffage & chaudière</figcaption></figure><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" role="img">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbeafe"/><stop offset="1" stop-color="#f0f9ff"/></linearGradient></defs>
+<rect width="400" height="280" fill="url(#bg)" rx="0"/>
+<rect x="0" y="200" width="400" height="80" fill="#93c5fd" opacity=".35"/>
+<rect x="70" y="130" width="260" height="70" rx="10" fill="#fff"/>
+<rect x="70" y="200" width="260" height="14" rx="6" fill="#cbd5e1"/>
+<path d="M150 130 q0 -50 50 -50 l0 18 q-32 0 -32 32 z" fill="#94a3b8"/>
+<rect x="192" y="62" width="16" height="26" rx="6" fill="#64748b"/>
+<path d="M200 92 l0 14 M188 96 l-4 12 M212 96 l4 12" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/>
+<ellipse cx="200" cy="165" rx="70" ry="22" fill="#e0f2fe"/>
+<circle cx="200" cy="165" r="7" fill="#334155"/>
+<circle cx="310" cy="105" r="26" fill="#fef3c7"/>
+<path d="M300 105 l8 8 14 -16" stroke="#d97706" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg><figcaption>Pose sanitaire & robinetterie</figcaption></figure></div></div></section>
 <section class="zone"><div class="wrap"><h2 class="t">Zone d'intervention</h2><p>Plomberie Martin intervient à Lyon · Villeurbanne · Caluire · Bron · Vénissieux et dans un rayon de 30 km.</p></div></section>
 <section><div class="wrap"><h2 class="t">Ils nous font confiance</h2><div class="avis-grid"><div class="avis"><div class="stars">★★★★★</div><p>« Intervention en 2 heures pour une fuite un samedi. Propre, efficace, prix annoncé respecté. »</p><span>— Claire D., Lyon 3e</span></div><div class="avis"><div class="stars">★★★★★</div><p>« Rénovation complète de notre salle de bain, résultat impeccable et délais tenus. »</p><span>— Marc & Sophie T., Villeurbanne</span></div><div class="avis"><div class="stars">★★★★★</div><p>« Entretien chaudière chaque année, toujours ponctuel et de bon conseil. »</p><span>— Ahmed B., Lyon 7e</span></div></div></div></section>
 <section class="contact" id="contact"><div class="wrap"><h2 class="t">Un projet ? Parlons-en</h2><p>Réponse sous 24 h — devis gratuit et sans engagement.</p><a class="cta" href="#">Demander un devis gratuit</a></div></section>
