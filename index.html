@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lokasite — Votre site pro, en ligne en 7 jours, à partir de 24 €/mois</title>
+<meta name="description" content="Sites web professionnels pour artisans, commerçants et indépendants. Tout compris : domaine, hébergement, modifications. 100 % en ligne, à partir de 24 €/mois.">
+<style>
+  :root{
+    --ink:#0b1b2b; --ink-soft:#3d5266; --line:#e3eaf0; --bg:#ffffff; --bg-soft:#f4f8fa;
+    --primary:#0e7490; --primary-dark:#0a5a70; --primary-soft:#e0f2f7;
+    --accent:#f59e0b; --accent-dark:#d97706;
+    --ok:#15803d; --radius:14px;
+    --shadow:0 6px 24px rgba(11,27,43,.08);
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.6}
+  img{max-width:100%}
+  a{color:var(--primary);text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  .btn{display:inline-block;border:none;cursor:pointer;font-family:var(--font);font-size:1rem;font-weight:600;border-radius:10px;padding:.85rem 1.6rem;transition:transform .12s ease, box-shadow .12s ease}
+  .btn:active{transform:scale(.98)}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 14px rgba(245,158,11,.35)}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-ghost{background:transparent;color:var(--primary);border:2px solid var(--primary)}
+  .btn-ghost:hover{background:var(--primary-soft)}
+  .tag{display:inline-block;background:var(--primary-soft);color:var(--primary-dark);font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:.3rem .75rem;border-radius:999px;margin-bottom:1rem}
+
+  /* Header */
+  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-size:1.35rem;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+  .logo span{color:var(--primary)}
+  .nav-links{display:flex;gap:1.5rem;align-items:center}
+  .nav-links a{color:var(--ink-soft);font-weight:500;font-size:.95rem}
+  .nav-links a:hover{color:var(--primary)}
+  .nav-links .btn{padding:.55rem 1.1rem;font-size:.9rem}
+  @media(max-width:760px){.nav-links a:not(.btn){display:none}}
+
+  /* Hero */
+  .hero{background:linear-gradient(180deg,var(--bg-soft) 0%,#fff 100%);padding:4.5rem 0 3.5rem;text-align:center}
+  .hero h1{font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.15;letter-spacing:-.02em;max-width:760px;margin:0 auto 1.2rem}
+  .hero h1 em{font-style:normal;color:var(--primary)}
+  .hero p.sub{font-size:1.15rem;color:var(--ink-soft);max-width:640px;margin:0 auto 2rem}
+  .hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+  .trust{display:flex;gap:1.6rem;justify-content:center;flex-wrap:wrap;color:var(--ink-soft);font-size:.92rem}
+  .trust span::before{content:"✓ ";color:var(--ok);font-weight:700}
+
+  section{padding:4rem 0}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 2.5rem}
+  .section-head h2{font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.01em;margin-bottom:.6rem}
+  .section-head p{color:var(--ink-soft)}
+
+  /* Benefits */
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;box-shadow:var(--shadow)}
+  .card .ico{font-size:1.6rem;margin-bottom:.7rem;display:block}
+  .card h3{font-size:1.05rem;margin-bottom:.4rem}
+  .card p{color:var(--ink-soft);font-size:.95rem}
+
+  /* Steps */
+  .steps{counter-reset:step;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.4rem}
+  .step{position:relative;background:var(--bg-soft);border-radius:var(--radius);padding:1.6rem 1.4rem 1.4rem}
+  .step::before{counter-increment:step;content:counter(step);position:absolute;top:-16px;left:1.2rem;width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(14,116,144,.4)}
+  .step h3{font-size:1rem;margin:.4rem 0 .35rem}
+  .step p{font-size:.92rem;color:var(--ink-soft)}
+
+  /* Pricing */
+  #tarifs{background:var(--bg-soft)}
+  .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;align-items:stretch}
+  .price{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+  .price.popular{border:2px solid var(--primary);position:relative}
+  .price.popular::before{content:"Le plus choisi";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;font-size:.75rem;font-weight:700;padding:.25rem .8rem;border-radius:999px;white-space:nowrap}
+  .price h3{font-size:1.1rem}
+  .price .amount{font-size:2.3rem;font-weight:800;letter-spacing:-.03em;margin:.5rem 0 0}
+  .price .amount small{font-size:1rem;font-weight:500;color:var(--ink-soft)}
+  .price .setup{color:var(--ink-soft);font-size:.85rem;margin-bottom:1.1rem}
+  .price .setup s{opacity:.6}
+  .price .setup b{color:var(--ok)}
+  .price ul{list-style:none;margin:0 0 1.5rem;flex:1}
+  .price li{padding:.34rem 0;font-size:.93rem;color:var(--ink-soft)}
+  .price li::before{content:"✓ ";color:var(--ok);font-weight:700}
+  .price li.no{opacity:.45}
+  .price li.no::before{content:"— ";color:var(--ink-soft)}
+  .price .btn{width:100%;text-align:center}
+  .eng-toggle{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin:1.2rem 0 2rem}
+  .eng-toggle button{border:2px solid var(--line);background:#fff;border-radius:999px;padding:.55rem 1.1rem;font-family:var(--font);font-size:.9rem;font-weight:600;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+  .eng-toggle button small{display:block;font-size:.72rem;font-weight:700;color:var(--ok)}
+  .eng-toggle button.sel{border-color:var(--primary);background:var(--primary-soft);color:var(--primary-dark)}
+  .engnote{font-size:.82rem;color:var(--ok);font-weight:600;min-height:1.2em;margin-bottom:.6rem}
+
+  /* Examples */
+  .examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem}
+  .ex{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+  .ex .thumb{height:130px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;color:#fff}
+  .ex .body{padding:1rem 1.2rem}
+  .ex h3{font-size:1rem}
+  .ex p{font-size:.88rem;color:var(--ink-soft)}
+
+  /* FAQ */
+  .faq{max-width:760px;margin:0 auto}
+  details{border:1px solid var(--line);border-radius:10px;margin-bottom:.8rem;background:#fff}
+  summary{cursor:pointer;padding:1rem 1.2rem;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::after{content:"+";font-size:1.3rem;color:var(--primary);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details .a{padding:0 1.2rem 1.1rem;color:var(--ink-soft);font-size:.95rem}
+
+  /* Final CTA */
+  .final{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:#fff;text-align:center;border-radius:var(--radius);padding:3rem 1.5rem;margin:0 20px}
+  .final h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:.6rem}
+  .final p{opacity:.9;margin-bottom:1.6rem}
+
+  footer{border-top:1px solid var(--line);padding:2.2rem 0;margin-top:4rem;color:var(--ink-soft);font-size:.88rem}
+  .foot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+  /* ===== Questionnaire (tunnel) ===== */
+  .overlay{position:fixed;inset:0;background:rgba(11,27,43,.55);display:none;z-index:100;overflow-y:auto;padding:3vh 15px}
+  .overlay.open{display:block}
+  .modal{background:#fff;max-width:640px;margin:0 auto;border-radius:18px;padding:2rem;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  .modal .close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink-soft)}
+  .progress{height:6px;background:var(--line);border-radius:999px;margin:1.2rem 0 1.8rem;overflow:hidden}
+  .progress i{display:block;height:100%;background:var(--primary);border-radius:999px;transition:width .3s ease}
+  .qstep{display:none}
+  .qstep.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .qstep h3{font-size:1.25rem;margin-bottom:.3rem}
+  .qstep .hint{color:var(--ink-soft);font-size:.92rem;margin-bottom:1.2rem}
+  .choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-bottom:1.4rem}
+  .choice{border:2px solid var(--line);border-radius:12px;padding:.9rem;cursor:pointer;text-align:center;font-weight:600;font-size:.93rem;transition:all .15s;background:#fff;color:var(--ink)}
+  .choice:hover{border-color:var(--primary)}
+  .choice.sel{border-color:var(--primary);background:var(--primary-soft);color:var(--primary-dark)}
+  .choice small{display:block;font-weight:400;color:var(--ink-soft);font-size:.8rem;margin-top:.2rem}
+  .field{margin-bottom:1.1rem}
+  .field label{display:block;font-weight:600;font-size:.92rem;margin-bottom:.35rem}
+  .field input,.field textarea,.field select{width:100%;padding:.75rem .9rem;border:2px solid var(--line);border-radius:10px;font-family:var(--font);font-size:1rem;color:var(--ink)}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--primary)}
+  .qnav{display:flex;justify-content:space-between;gap:1rem;margin-top:1.5rem}
+  .qnav .back{background:none;border:none;color:var(--ink-soft);cursor:pointer;font-size:.95rem;font-family:var(--font)}
+  .qnav .back:hover{color:var(--primary)}
+
+  /* Proposition */
+  .proposal{border:2px solid var(--primary);border-radius:var(--radius);padding:1.5rem;background:var(--primary-soft);margin:1rem 0 1.4rem}
+  .proposal h4{font-size:1.05rem;color:var(--primary-dark);margin-bottom:.6rem}
+  .proposal .big{font-size:2rem;font-weight:800;color:var(--ink)}
+  .proposal .big small{font-size:1rem;font-weight:500;color:var(--ink-soft)}
+  .proposal ul{list-style:none;margin:.8rem 0 0}
+  .proposal li{font-size:.92rem;padding:.2rem 0;color:var(--ink-soft)}
+  .proposal li::before{content:"✓ ";color:var(--ok);font-weight:700}
+  .note{font-size:.85rem;color:var(--ink-soft);margin-top:.8rem}
+  .success{text-align:center;padding:1rem 0}
+  .success .big-ico{font-size:3rem;display:block;margin-bottom:.8rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">Loka<span>site</span></div>
+    <nav class="nav-links">
+      <a href="#offres">Offres</a>
+      <a href="#comment">Comment ça marche</a>
+      <a href="#exemples">Exemples</a>
+      <a href="#faq">FAQ</a>
+      <button class="btn btn-primary" onclick="openTunnel()">Créer mon site</button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="tag">Sites web pour artisans &amp; commerces locaux</span>
+    <h1>Votre site professionnel, <em>en ligne en 7 jours</em>, à partir de 24 €/mois.</h1>
+    <p class="sub">On s'occupe de tout : création, nom de domaine, hébergement, modifications. Vous répondez à quelques questions en 5 minutes — sans rendez-vous, sans coup de téléphone.</p>
+    <div class="hero-ctas">
+      <button class="btn btn-primary" onclick="openTunnel()">Décrire mon besoin — 5 min</button>
+      <a class="btn btn-ghost" href="#offres">Voir les tarifs</a>
+    </div>
+    <div class="trust">
+      <span>Engagement au choix : 12, 24 ou 36 mois</span>
+      <span>Nom de domaine inclus</span>
+      <span>Modifications par email</span>
+      <span>Devis instantané en ligne</span>
+    </div>
+  </div>
+</section>
+
+<section id="pourquoi">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Vos clients vous cherchent sur Google. Ils vous trouvent ?</h2>
+      <p>Plus d'un million de TPE françaises n'ont pas encore de site web. Chaque jour sans site, ce sont des clients qui appellent vos concurrents.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><span class="ico">🔍</span><h3>Être trouvé localement</h3><p>Un site rapide et optimisé pour les recherches « votre métier + votre ville », relié à votre fiche Google.</p></div>
+      <div class="card"><span class="ico">🛠️</span><h3>Zéro technique, zéro réunion</h3><p>Vous décrivez votre activité en 5 minutes, on rédige, on met en page, on publie. Vous validez par email.</p></div>
+      <div class="card"><span class="ico">💶</span><h3>Un prix d'abonnement, tout compris</h3><p>Domaine, hébergement sécurisé, modifications : un seul petit prix mensuel, sans frais cachés.</p></div>
+      <div class="card"><span class="ico">🤝</span><h3>Vous restez propriétaire</h3><p>Votre nom de domaine et vos contenus vous appartiennent. Si vous partez, vous partez avec.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="comment">
+  <div class="wrap">
+    <div class="section-head"><h2>Comment ça marche</h2><p>De votre besoin à votre site en ligne, en 4 étapes et 7 jours ouvrés.</p></div>
+    <div class="steps">
+      <div class="step"><h3>Décrivez votre besoin</h3><p>Questionnaire en ligne de 5 minutes : votre métier, votre ville, vos couleurs, ce que vous voulez montrer.</p></div>
+      <div class="step"><h3>Recevez votre proposition</h3><p>Formule recommandée et devis immédiat, par email. Vous acceptez en un clic, vous payez en ligne.</p></div>
+      <div class="step"><h3>Validez votre site</h3><p>Sous 5 jours, vous recevez un lien de prévisualisation. Deux séries de corrections incluses.</p></div>
+      <div class="step"><h3>En ligne, et suivi</h3><p>Votre site est publié sur votre domaine. Ensuite, chaque modification se demande par simple email.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="offres">
+  <div class="wrap">
+    <div class="section-head"><h2>Des tarifs simples, sans surprise</h2><p>Plus vous vous engagez, moins vous payez chaque mois. Mise en ligne : <s>250 €</s> <b style="color:var(--ok)">100 €</b> (offre de lancement).</p></div>
+    <div class="eng-toggle" id="engToggle">
+      <button data-months="12" class="sel">12 mois</button>
+      <button data-months="24">24 mois<small>−10 %</small></button>
+      <button data-months="36">36 mois<small>jusqu'à −20 %</small></button>
+    </div>
+    <div class="prices">
+      <div class="price">
+        <h3>Essentiel</h3>
+        <div class="amount" id="amt-Essentiel">29 €<small>/mois</small></div>
+        <div class="engnote" id="eng-Essentiel"></div>
+        <div class="setup">Mise en ligne : <s>250 €</s> <b>100 €</b> (lancement)</div>
+        <ul>
+          <li>Site une page complet et pro</li>
+          <li>Nom de domaine .fr inclus</li>
+          <li>Hébergement sécurisé (SSL)</li>
+          <li>Formulaire de contact</li>
+          <li>1 modification par mois</li>
+          <li class="no">Fiche Google Business optimisée</li>
+          <li class="no">Référencement local renforcé</li>
+        </ul>
+        <button class="btn btn-ghost" onclick="openTunnel('essentiel')">Choisir Essentiel</button>
+      </div>
+      <div class="price popular">
+        <h3>Pro</h3>
+        <div class="amount" id="amt-Pro">49 €<small>/mois</small></div>
+        <div class="engnote" id="eng-Pro"></div>
+        <div class="setup">Mise en ligne : <s>250 €</s> <b>100 €</b> (lancement)</div>
+        <ul>
+          <li>Jusqu'à 5 pages (services, réalisations…)</li>
+          <li>Nom de domaine .fr inclus</li>
+          <li>Hébergement sécurisé (SSL)</li>
+          <li>Modifications illimitées par email</li>
+          <li>Fiche Google Business optimisée</li>
+          <li>Galerie photos de vos réalisations</li>
+          <li class="no">Pages locales &amp; blog</li>
+        </ul>
+        <button class="btn btn-primary" onclick="openTunnel('pro')">Choisir Pro</button>
+      </div>
+      <div class="price">
+        <h3>Premium</h3>
+        <div class="amount" id="amt-Premium">89 €<small>/mois</small></div>
+        <div class="engnote" id="eng-Premium"></div>
+        <div class="setup">Mise en ligne : <s>250 €</s> <b>100 €</b> (lancement)</div>
+        <ul>
+          <li>Jusqu'à 10 pages + blog</li>
+          <li>Nom de domaine .fr inclus</li>
+          <li>Modifications illimitées et prioritaires</li>
+          <li>Fiche Google Business optimisée</li>
+          <li>Référencement local renforcé (pages villes)</li>
+          <li>Collecte d'avis clients</li>
+          <li>Rapport de visites mensuel</li>
+        </ul>
+        <button class="btn btn-ghost" onclick="openTunnel('premium')">Choisir Premium</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="exemples">
+  <div class="wrap">
+    <div class="section-head"><h2>Pensé pour votre métier</h2><p>Des modèles éprouvés par secteur, personnalisés à votre image — pas des sites génériques.</p></div>
+    <div class="examples">
+      <div class="ex"><div class="thumb" style="background:linear-gradient(135deg,#0e7490,#155e75)">🔧</div><div class="body"><h3>Artisans du bâtiment</h3><p>Plombiers, électriciens, maçons : réalisations, zone d'intervention, demande de devis.</p></div></div>
+      <div class="ex"><div class="thumb" style="background:linear-gradient(135deg,#b45309,#f59e0b)">🍞</div><div class="body"><h3>Commerces de proximité</h3><p>Boulangeries, fleuristes, boutiques : horaires, produits, itinéraire, actualités.</p></div></div>
+      <div class="ex"><div class="thumb" style="background:linear-gradient(135deg,#15803d,#22c55e)">💆</div><div class="body"><h3>Beauté &amp; bien-être</h3><p>Coiffeurs, esthéticiennes, thérapeutes : prestations, tarifs, prise de contact simple.</p></div></div>
+      <div class="ex"><div class="thumb" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">📋</div><div class="body"><h3>Services &amp; indépendants</h3><p>Coachs, formateurs, consultants : présentation claire, crédibilité, demandes entrantes.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head"><h2>Questions fréquentes</h2></div>
+    <div class="faq">
+      <details><summary>Pourquoi est-ce moins cher qu'une agence ?</summary><div class="a">Notre production est largement automatisée et tout se passe en ligne : pas de commerciaux, pas de rendez-vous, pas de locaux. Vous payez le site, pas la structure autour. C'est aussi pour cela que le contact se fait uniquement par email — et c'est ce qui nous permet de répondre vite et de garder des prix bas.</div></details>
+      <details><summary>J'ai déjà un nom de domaine, je peux le garder ?</summary><div class="a">Oui. Indiquez-le dans le questionnaire : nous vous guidons par email pour le connecter (ou nous nous en chargeons si vous nous transmettez les accès). Si vous n'en avez pas, un domaine .fr est inclus dans l'abonnement.</div></details>
+      <details><summary>Que se passe-t-il si je résilie ?</summary><div class="a">À la fin de votre engagement, vous êtes libre de partir sans frais. Votre nom de domaine vous appartient et nous vous transférons vos contenus (textes et images). Le site cesse simplement d'être hébergé chez nous à la fin du mois payé.</div></details>
+      <details><summary>Qui écrit les textes du site ?</summary><div class="a">Nous. À partir de vos réponses au questionnaire, nous rédigeons des textes professionnels et optimisés pour votre métier et votre ville. Vous pouvez bien sûr fournir vos propres textes si vous préférez, et vous validez tout avant mise en ligne.</div></details>
+      <details><summary>Comment se passent les modifications ?</summary><div class="a">Un simple email à contact@lokasite.fr (« changez mes horaires », « ajoutez ces photos »…). Les modifications sont faites sous 48 h ouvrées, incluses dans votre abonnement selon votre formule.</div></details>
+      <details><summary>Y a-t-il un engagement de durée ?</summary><div class="a">Oui : nos formules sont avec engagement de 12, 24 ou 36 mois — c'est ce qui nous permet de créer votre site pour seulement 100 € de frais de mise en ligne. Plus l'engagement est long, plus la mensualité baisse (jusqu'à −20 %). En cas de résiliation anticipée, les mensualités restantes sont dues (détail dans les CGV).</div></details>
+    </div>
+  </div>
+</section>
+
+<div class="final">
+  <h2>Prêt à être visible sur Google ?</h2>
+  <p>5 minutes pour décrire votre besoin, un devis immédiat, votre site en ligne sous 7 jours.</p>
+  <button class="btn btn-primary" onclick="openTunnel()">Créer mon site maintenant</button>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <div><strong>Lokasite</strong> — sites web pour artisans &amp; commerces locaux<br>contact@lokasite.fr</div>
+    <div><a href="#">Mentions légales</a> · <a href="#">CGV</a> · <a href="#">Confidentialité</a></div>
+  </div>
+</footer>
+
+<!-- ===================== TUNNEL DE BESOIN ===================== -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="close" onclick="closeTunnel()" aria-label="Fermer">✕</button>
+    <div class="logo" style="font-size:1.1rem">Loka<span>site</span> — votre projet en 5 minutes</div>
+    <div class="progress"><i id="bar" style="width:14%"></i></div>
+
+    <!-- Étape 1 : métier -->
+    <div class="qstep active" data-step="1">
+      <h3>Quelle est votre activité ?</h3>
+      <p class="hint">Cela nous permet de choisir le bon modèle et le bon vocabulaire.</p>
+      <div class="choices" data-key="metier">
+        <div class="choice" data-val="Artisan du bâtiment">🔧 Bâtiment<small>plombier, électricien…</small></div>
+        <div class="choice" data-val="Commerce de proximité">🛍️ Commerce<small>boutique, restauration…</small></div>
+        <div class="choice" data-val="Beauté / bien-être">💆 Beauté / bien-être<small>coiffure, soins…</small></div>
+        <div class="choice" data-val="Services / indépendant">📋 Services<small>coach, consultant…</small></div>
+      </div>
+      <div class="field"><label for="precision">Précisez votre métier</label><input id="precision" data-key="precision" placeholder="Ex. : plombier chauffagiste"></div>
+      <div class="qnav"><span></span><button class="btn btn-primary" onclick="next()">Continuer</button></div>
+    </div>
+
+    <!-- Étape 2 : localisation -->
+    <div class="qstep" data-step="2">
+      <h3>Où exercez-vous ?</h3>
+      <p class="hint">Votre ville et votre zone d'intervention servent au référencement local.</p>
+      <div class="field"><label for="ville">Ville principale</label><input id="ville" data-key="ville" placeholder="Ex. : Lyon"></div>
+      <div class="field"><label for="zone">Zone d'intervention (facultatif)</label><input id="zone" data-key="zone" placeholder="Ex. : Lyon et 30 km alentour"></div>
+      <div class="qnav"><button class="back" onclick="prev()">← Retour</button><button class="btn btn-primary" onclick="next()">Continuer</button></div>
+    </div>
+
+    <!-- Étape 3 : contenu souhaité -->
+    <div class="qstep" data-step="3">
+      <h3>Que voulez-vous montrer ?</h3>
+      <p class="hint">Sélectionnez tout ce qui vous concerne — cela détermine la taille de votre site.</p>
+      <div class="choices multi" data-key="contenus">
+        <div class="choice" data-val="Mes services et tarifs">Mes services<small>et tarifs</small></div>
+        <div class="choice" data-val="Photos de mes réalisations">Mes réalisations<small>galerie photos</small></div>
+        <div class="choice" data-val="Avis de mes clients">Avis clients</div>
+        <div class="choice" data-val="Un blog / des actualités">Blog / actualités</div>
+        <div class="choice" data-val="Plusieurs villes d'intervention">Plusieurs villes<small>pages locales</small></div>
+        <div class="choice" data-val="Juste l'essentiel : qui je suis, contact">Juste l'essentiel<small>présentation + contact</small></div>
+      </div>
+      <div class="qnav"><button class="back" onclick="prev()">← Retour</button><button class="btn btn-primary" onclick="next()">Continuer</button></div>
+    </div>
+
+    <!-- Étape 4 : domaine -->
+    <div class="qstep" data-step="4">
+      <h3>Le nom de domaine</h3>
+      <p class="hint">L'adresse de votre site (ex. : dupont-plomberie.fr).</p>
+      <div class="choices" data-key="domaine">
+        <div class="choice" data-val="À créer (inclus)">Je n'en ai pas<small>on le crée, c'est inclus</small></div>
+        <div class="choice" data-val="J'en ai déjà un">J'en ai déjà un<small>on le connecte</small></div>
+      </div>
+      <div class="field"><label for="domaine_nom">Si vous en avez un, ou une idée de nom (facultatif)</label><input id="domaine_nom" data-key="domaine_nom" placeholder="Ex. : dupont-plomberie.fr"></div>
+      <div class="qnav"><button class="back" onclick="prev()">← Retour</button><button class="btn btn-primary" onclick="next()">Continuer</button></div>
+    </div>
+
+    <!-- Étape 5 : matière première -->
+    <div class="qstep" data-step="5">
+      <h3>Vos textes et photos</h3>
+      <p class="hint">Pas d'inquiétude si vous n'avez rien : la rédaction est incluse.</p>
+      <div class="choices" data-key="matiere">
+        <div class="choice" data-val="J'ai des photos et/ou textes">J'ai des photos<small>et/ou des textes</small></div>
+        <div class="choice" data-val="Je n'ai rien, faites tout">Je n'ai rien<small>rédigez tout pour moi</small></div>
+      </div>
+      <div class="field"><label for="souhaits">Un souhait particulier ? (couleurs, sites que vous aimez…)</label><textarea id="souhaits" data-key="souhaits" rows="3" placeholder="Ex. : j'aime le bleu et le blanc, un style sobre…"></textarea></div>
+      <div class="qnav"><button class="back" onclick="prev()">← Retour</button><button class="btn btn-primary" onclick="next()">Continuer</button></div>
+    </div>
+
+    <!-- Étape 6 : engagement -->
+    <div class="qstep" data-step="6">
+      <h3>Votre engagement</h3>
+      <p class="hint">Choisissez votre durée : plus vous vous engagez, moins vous payez chaque mois.</p>
+      <div class="choices" data-key="engagement">
+        <div class="choice sel" data-val="12">12 mois<small>tarif de base</small></div>
+        <div class="choice" data-val="24">24 mois<small>−10 % par mois</small></div>
+        <div class="choice" data-val="36">36 mois<small>jusqu'à −20 % par mois</small></div>
+      </div>
+      <div class="qnav"><button class="back" onclick="prev()">← Retour</button><button class="btn btn-primary" onclick="next()">Voir ma proposition</button></div>
+    </div>
+
+    <!-- Étape 7 : proposition -->
+    <div class="qstep" data-step="7">
+      <h3>Notre proposition pour vous</h3>
+      <div class="proposal" id="proposalBox"></div>
+      <p class="hint">Recevez cette proposition et votre devis par email — sans aucun engagement.</p>
+      <div class="field"><label for="nom">Votre nom</label><input id="nom" data-key="nom" placeholder="Ex. : Karim Dupont"></div>
+      <div class="field"><label for="email">Votre email</label><input id="email" data-key="email" type="email" placeholder="vous@exemple.fr"></div>
+      <div class="qnav"><button class="back" onclick="prev()">← Retour</button><button class="btn btn-primary" onclick="submitBrief()">Recevoir mon devis par email</button></div>
+      <p class="note">En envoyant ce formulaire, vous acceptez d'être contacté par email au sujet de votre projet. Aucune démarche commerciale téléphonique — nous n'avons même pas votre numéro.</p>
+    </div>
+
+    <!-- Étape 8 : confirmation -->
+    <div class="qstep" data-step="8">
+      <div class="success">
+        <span class="big-ico">📬</span>
+        <h3>C'est parti !</h3>
+        <p class="hint" id="successMsg">Votre demande est envoyée. Vous recevrez votre proposition détaillée et votre devis par email sous quelques heures ouvrées.</p>
+        <button class="btn btn-primary" onclick="closeTunnel()">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============ État du tunnel ============ */
+const brief = { formulePreselection:null };
+let step = 1; const LAST = 8;
+
+/* Grille tarifaire : prix mensuel selon formule et engagement (mois) */
+const PRICES = {
+  'Essentiel': {12:29, 24:26, 36:24},
+  'Pro':       {12:49, 24:44, 36:39},
+  'Premium':   {12:89, 24:79, 36:69}
+};
+const ENG_LABEL = {12:'engagement 12 mois', 24:'engagement 24 mois', 36:'engagement 36 mois'};
+
+/* Sélecteur d'engagement de la page tarifs */
+document.getElementById('engToggle').querySelectorAll('button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.getElementById('engToggle').querySelectorAll('button').forEach(x=>x.classList.remove('sel'));
+    b.classList.add('sel');
+    const m = +b.dataset.months;
+    for(const f of Object.keys(PRICES)){
+      document.getElementById('amt-'+f).innerHTML = PRICES[f][m]+' €<small>/mois</small>';
+      document.getElementById('eng-'+f).textContent = m===12 ? '' : ENG_LABEL[m]+' · au lieu de '+PRICES[f][12]+' €/mois';
+    }
+  });
+});
+
+function openTunnel(pre){ brief.formulePreselection = pre || null; document.getElementById('overlay').classList.add('open'); document.body.style.overflow='hidden'; go(1); }
+function closeTunnel(){ document.getElementById('overlay').classList.remove('open'); document.body.style.overflow=''; }
+function go(n){ step=n;
+  document.querySelectorAll('.qstep').forEach(s=>s.classList.toggle('active', +s.dataset.step===n));
+  document.getElementById('bar').style.width = Math.round(n/LAST*100)+'%';
+  if(n===7) renderProposal();
+}
+function next(){ collect(); if(step<LAST) go(step+1); }
+function prev(){ if(step>1) go(step-1); }
+
+/* choix cliquables */
+document.querySelectorAll('.choices').forEach(group=>{
+  const multi = group.classList.contains('multi');
+  group.querySelectorAll('.choice').forEach(c=>{
+    c.addEventListener('click',()=>{
+      if(multi){ c.classList.toggle('sel'); }
+      else { group.querySelectorAll('.choice').forEach(x=>x.classList.remove('sel')); c.classList.add('sel'); }
+      collect();
+    });
+  });
+});
+function collect(){
+  document.querySelectorAll('.choices').forEach(g=>{
+    const key=g.dataset.key, sel=[...g.querySelectorAll('.choice.sel')].map(c=>c.dataset.val);
+    brief[key] = g.classList.contains('multi') ? sel : (sel[0]||null);
+  });
+  document.querySelectorAll('[data-key]').forEach(el=>{
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA') brief[el.dataset.key]=el.value.trim();
+  });
+}
+
+/* ============ Moteur de recommandation ============ */
+function recommend(){
+  const c = brief.contenus||[];
+  let f = 'Essentiel', prix = 29, raisons = ['Site une page complet : présentation, services, contact','Nom de domaine .fr et hébergement inclus','1 modification par mois incluse'];
+  const wantsBlog = c.includes('Un blog / des actualités');
+  const wantsVilles = c.includes("Plusieurs villes d'intervention");
+  const rich = ['Mes services et tarifs','Photos de mes réalisations','Avis de mes clients'].filter(x=>c.includes(x)).length;
+  if(wantsBlog || wantsVilles){ f='Premium'; prix=89; raisons=['Jusqu\'à 10 pages + blog pour vos actualités','Référencement local renforcé (pages par ville)','Collecte d\'avis clients et rapport mensuel','Modifications illimitées et prioritaires']; }
+  else if(rich>=2 && !c.includes('Juste l\'essentiel : qui je suis, contact')){ f='Pro'; prix=49; raisons=['Jusqu\'à 5 pages : services, réalisations, avis, contact','Fiche Google Business optimisée pour être trouvé localement','Modifications illimitées par simple email','Nom de domaine .fr et hébergement inclus']; }
+  if(brief.formulePreselection){ const map={essentiel:['Essentiel',29],pro:['Pro',49],premium:['Premium',89]}; if(map[brief.formulePreselection] && map[brief.formulePreselection][1]>prix){ [f,prix]=map[brief.formulePreselection]; } }
+  return {f,prix,raisons};
+}
+function renderProposal(){
+  collect();
+  const {f,raisons} = recommend();
+  const months = +(brief.engagement||12);
+  const prix = PRICES[f][months];
+  const base = PRICES[f][12];
+  brief.formuleRecommandee=f; brief.prixMensuel=prix; brief.engagementMois=months;
+  const metier = brief.precision||brief.metier||'votre activité';
+  const ville = brief.ville?(' à '+brief.ville):'';
+  const engTxt = months===12
+    ? 'Engagement 12 mois'
+    : `${ENG_LABEL[months].charAt(0).toUpperCase()+ENG_LABEL[months].slice(1)} — <b style="color:var(--ok)">au lieu de ${base} €/mois</b>, soit ${(base-prix)*months} € économisés`;
+  document.getElementById('proposalBox').innerHTML =
+    `<h4>Formule recommandée pour ${metier}${ville} :</h4>
+     <div class="big">${f} — ${prix} €<small>/mois</small></div>
+     <ul>${raisons.map(r=>`<li>${r}</li>`).join('')}</ul>
+     <p class="note">${engTxt} · Mise en ligne <s>250 €</s> <b style="color:var(--ok)">100 €</b> (offre de lancement) · Site en ligne sous 7 jours ouvrés après validation.</p>`;
+}
+
+/* ============ Envoi du brief ============
+   V1 (avant branchement du back-end Supabase) : l'envoi se fait par email
+   pré-rempli vers contact@lokasite.fr — fonctionnel dès le premier jour.
+   V2 : remplacer submitBrief() par un POST /api/briefs (Supabase) qui
+   déclenche la proposition + le devis PDF automatiques. */
+function submitBrief(){
+  collect();
+  if(!brief.email || !/.+@.+\..+/.test(brief.email)){ alert('Merci d\'indiquer un email valide pour recevoir votre devis.'); return; }
+  const lignes = [
+    'NOUVELLE DEMANDE LOKASITE','======================',
+    'Nom : '+(brief.nom||'—'),
+    'Email : '+brief.email,
+    'Activité : '+(brief.metier||'—')+' / '+(brief.precision||'—'),
+    'Ville : '+(brief.ville||'—')+' | Zone : '+(brief.zone||'—'),
+    'Contenus souhaités : '+((brief.contenus||[]).join(', ')||'—'),
+    'Domaine : '+(brief.domaine||'—')+' ('+(brief.domaine_nom||'aucun nom fourni')+')',
+    'Matière : '+(brief.matiere||'—'),
+    'Souhaits : '+(brief.souhaits||'—'),
+    'Formule recommandée : '+brief.formuleRecommandee+' à '+brief.prixMensuel+' €/mois',
+    'Engagement : '+ENG_LABEL[brief.engagementMois||12]
+  ].join('\n');
+  const mail = 'mailto:contact@lokasite.fr?subject='+encodeURIComponent('Demande de devis — '+(brief.precision||brief.metier||'site web'))+'&body='+encodeURIComponent(lignes);
+  window.location.href = mail; /* V1 : ouvre l'email pré-rempli du visiteur */
+  go(7);
+}
+</script>
+</body>
+</html>
